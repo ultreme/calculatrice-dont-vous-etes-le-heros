@@ -52,8 +52,17 @@ func (b *Book) Operation(input int, operation int, diff int) int {
 	case OperationMul:
 		result = input * diff
 	case OperationDiv:
+		if input <= diff {
+			return 0
+		}
+		if input%diff != 0 {
+			return 0
+		}
 		result = input / diff
 	case OperationMod:
+		if input <= diff {
+			return 0
+		}
 		result = input % diff
 	}
 
@@ -75,23 +84,52 @@ func (b *Book) GetPage(number int) int {
 	return 0
 }
 
+func Shuffle(src []string) []string {
+	dest := make([]string, len(src))
+	perm := rand.Perm(len(src))
+	for i, v := range perm {
+		dest[v] = src[i]
+	}
+	return dest
+}
+
 func (b *Book) PrintMarkdown() {
-	fmt.Println("# La calculatrice dont vous êtes le héros.")
+	fmt.Println("% La calculatrice dont vous êtes le héros.")
+	fmt.Println("% Jean-George consulting")
 
 	for i := 0; i < b.Pages; i++ {
 		chiffre := b.Mapping[i] + 1
 		//page := i + b.Base
-		fmt.Printf("# Le chiffre %d\n", chiffre)
-		fmt.Println("")
+
+		totalOperations := []string{}
 
 		for operation := OperationAdd; operation <= OperationMod; operation++ {
+			operationLines := []string{}
 			for diff := 1; diff < b.Pages; diff++ {
 				result := b.Operation(chiffre, operation, diff)
 				if result != 0 && result != chiffre {
 					symbol := SymbolMapping[operation]
-					fmt.Printf("* Si tu veux voir combien font %d %s %d, rends toi page %d\n", chiffre, symbol, diff, b.GetPage(result))
+					operationLines = append(operationLines, fmt.Sprintf("* Si tu veux voir combien font %d %s %d, rends toi page %d", chiffre, symbol, diff, b.GetPage(result)))
 				}
 			}
+
+			for i, line := range Shuffle(operationLines) {
+				if i > 5 {
+					break
+				}
+				totalOperations = append(totalOperations, line)
+			}
+		}
+
+		// PRINT
+		fmt.Printf("# Le chiffre %d\n", chiffre)
+		fmt.Println("")
+
+		for _, line := range Shuffle(totalOperations) {
+			if i > 10 {
+				break
+			}
+			fmt.Println(line)
 		}
 
 		fmt.Println("")
