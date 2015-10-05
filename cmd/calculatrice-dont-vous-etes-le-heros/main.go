@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ultreme/calculatrice-dont-vous-etes-le-hero"
+	"github.com/ultreme/calculatrice-dont-vous-etes-le-heros"
 )
 
 func init() {
