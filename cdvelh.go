@@ -125,11 +125,13 @@ func (b *Book) PrintMarkdown() {
 		fmt.Printf("# Le chiffre %d\n", chiffre)
 		fmt.Println("")
 
+		i := 0
 		for _, line := range Shuffle(totalOperations) {
 			if i > 10 {
 				break
 			}
 			fmt.Println(line)
+			i++
 		}
 
 		fmt.Println("")
