@@ -95,7 +95,7 @@ func Shuffle(src []string) []string {
 
 func (b *Book) PrintMarkdown() {
 	fmt.Println("% La calculatrice dont vous êtes le héros.")
-	fmt.Println("% Jean-George consulting")
+	fmt.Println("% Manfred Touron")
 
 	for i := 0; i < b.Pages; i++ {
 		chiffre := b.Mapping[i] + 1
@@ -109,7 +109,7 @@ func (b *Book) PrintMarkdown() {
 				result := b.Operation(chiffre, operation, diff)
 				if result != 0 && result != chiffre {
 					symbol := SymbolMapping[operation]
-					operationLines = append(operationLines, fmt.Sprintf("* Si tu veux voir combien font %d %s %d, rends toi page %d", chiffre, symbol, diff, b.GetPage(result)))
+					operationLines = append(operationLines, fmt.Sprintf("| **%d %s %d** | voir page %d |", chiffre, symbol, diff, b.GetPage(result)))
 				}
 			}
 
@@ -122,8 +122,12 @@ func (b *Book) PrintMarkdown() {
 		}
 
 		// PRINT
-		fmt.Printf("# Le chiffre %d\n", chiffre)
+		fmt.Printf("# %d\n", chiffre)
 		fmt.Println("")
+		fmt.Println("| Calcul | Solution |")
+		fmt.Println("| :-- | --: |")
+		// fmt.Printf("Liste des calculs de pro avec %d:\n", chiffre)
+		//fmt.Println("")
 
 		i := 0
 		for _, line := range Shuffle(totalOperations) {

@@ -30,7 +30,7 @@ clean:
 	rm -f $(STD_OUTPUTS) $(CUSTOM_OUTPUTS) $(DISABLED_OUTPUTS)
 
 
-book.md:
+book.md: cdvelh.go
 	go run ./cmd/calculatrice-dont-vous-etes-le-heros/main.go > $@
 
 
@@ -42,5 +42,5 @@ book.odt: book.md
 
 $(STD_OUTPUTS): book.md
 	@rm -f tmp-$@
-	pandoc $< -o tmp-$@
+	pandoc --toc --toc-depth=2 --epub-cover-image=cover2.jpg --epub-metadata=metadata.xml $< -o tmp-$@
 	@mv tmp-$@ $@
