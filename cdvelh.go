@@ -94,16 +94,23 @@ func Shuffle(src []string) []string {
 }
 
 func (b *Book) PrintMarkdown() {
-	fmt.Println("% La calculatrice dont vous êtes le héros.")
-	fmt.Println("% Manfred Touron")
+	//fmt.Println("% La calculatrice dont vous êtes le héros.")
+	//fmt.Println("% Manfred Touron")
+	//fmt.Println("")
+	fmt.Println("_Ce livre a été généré par un **ordinateur**_")
+	fmt.Println("_mais fait avec beaucoup d'<3 par un humain (**Manfred Touron**)._")
 	fmt.Println("")
-	fmt.Println("Un livre généré par ordinateur.")
+	fmt.Println("Dessin de couverture fait par tonton [Gajeb](https://gajeb.cool).")
 	fmt.Println("")
-	fmt.Println("Sources disponibles sur [moul.link/calc-heros-book](https://moul.link/calc-heros-book)")
+	fmt.Println("_Code source disponible librement sur [moul.link/calc-heros-book](https://moul.link/calc-heros-book)_")
+
 	fmt.Println("")
-	fmt.Println("Ultreme Publishing")
+	fmt.Println("_Blog de l'auteur: **[manfred.life](https://manfred.life)**_")
+	fmt.Println("")
+	fmt.Println("_Editions: **Ultreme Publishing**_")
 	fmt.Println("")
 	fmt.Println("---")
+	fmt.Println("")
 
 	for i := 0; i < b.Pages; i++ {
 		chiffre := b.Mapping[i] + 1

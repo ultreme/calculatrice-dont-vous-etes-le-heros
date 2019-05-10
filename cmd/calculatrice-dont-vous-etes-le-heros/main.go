@@ -12,6 +12,6 @@ func init() {
 }
 
 func main() {
-	book := cdvelh.MakeBook(1000, 2)
+	book := cdvelh.MakeBook(1000, 3)
 	book.PrintMarkdown()
 }
