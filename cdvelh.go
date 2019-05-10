@@ -96,6 +96,14 @@ func Shuffle(src []string) []string {
 func (b *Book) PrintMarkdown() {
 	fmt.Println("% La calculatrice dont vous êtes le héros.")
 	fmt.Println("% Manfred Touron")
+	fmt.Println("")
+	fmt.Println("Un livre généré par ordinateur.")
+	fmt.Println("")
+	fmt.Println("Sources disponibles sur [moul.link/calc-heros-book](https://moul.link/calc-heros-book)")
+	fmt.Println("")
+	fmt.Println("Ultreme Publishing")
+	fmt.Println("")
+	fmt.Println("---")
 
 	for i := 0; i < b.Pages; i++ {
 		chiffre := b.Mapping[i] + 1

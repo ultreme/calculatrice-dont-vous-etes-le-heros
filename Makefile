@@ -42,5 +42,5 @@ book.odt: book.md
 
 $(STD_OUTPUTS): book.md
 	@rm -f tmp-$@
-	pandoc --toc --toc-depth=2 --epub-cover-image=cover2.jpg --epub-metadata=metadata.xml $< -o tmp-$@
+	pandoc --epub-cover-image=cover2.jpg --epub-metadata=metadata.xml $< -o tmp-$@
 	@mv tmp-$@ $@
